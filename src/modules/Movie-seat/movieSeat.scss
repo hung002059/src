@@ -4,17 +4,21 @@
     background: yellowgreen;
     margin-right: 3px;
     margin-bottom: 3px;
+    border-radius: 5px;
 
     &.gheVip {
         background-color: red;
     }
 
     &.dangDat {
-        background-color: orange;
+        background-color: black;
+        color: white;
     }
 
     &.daDat {
         cursor: not-allowed;
-        background-color: gray;
+        background-color: blue;
+        color: white;
+        
     }
 }

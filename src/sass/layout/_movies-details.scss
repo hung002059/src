@@ -79,7 +79,6 @@
          .showtime_content{
             .content{
                border: 2px solid;
-               border-width: 100%;
                .RapPhim{
                   .RapPhim_title{
                      img{
@@ -91,6 +90,7 @@
                .GioChieu{
                   justify-content: space-around;
                   a{
+                     margin: 10px 0;
                      height: 80px;
                      width: 270px;
                      border: 2px solid;

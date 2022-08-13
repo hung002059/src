@@ -14,13 +14,31 @@
          display: flex;
          justify-content: center;
          button{
-            margin: 0.5rem;
+            margin: 0.15rem;
+         }
+      }
+      .chair_decript{
+         justify-content: space-around;
+         h5{
+            display: flex;
+            align-items: center;
          }
       }
    }
    .border_detail{
+      .detail_img{
+         display: flex;
+         justify-content: center;
+         img{
+            height: 300px;
+         }
+      }
       .detail_content{
-         p{
+         .title{
+            font-size: 22px;
+            font-weight: 700;
+         }
+         .content{
             font-size: 20px;
          }
          button{
