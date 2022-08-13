@@ -1,0 +1,37 @@
+#movies_booking{
+   .border_chair{
+      border: 1px solid silver;
+      .screen{
+         height: 100px;
+            h6{
+               padding: 0.5rem;
+               background-color: black;
+               color: white;
+               margin: 1rem 1.5rem;
+            }
+         }
+      .chair{
+         display: flex;
+         justify-content: center;
+         button{
+            margin: 0.5rem;
+         }
+      }
+   }
+   .border_detail{
+      .detail_content{
+         p{
+            font-size: 20px;
+         }
+         button{
+            font-weight: 700;
+            font-size: 17px;
+            @include setButton($bg_color_1,$bg_color_2,$text_color_3,$direc_right);
+            &:hover{
+                  transition: all 1s;
+                  @include setButtonHover($bg_color_1,$bg_color_2,$text_color_1,$direc_left);
+               }
+         }
+      }
+   }
+}
