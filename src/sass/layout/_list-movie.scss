@@ -5,7 +5,7 @@
          .nav-item{
             .nav-link{
                background-color: transparent;
-               color: whitesmoke;
+               color: whitesmoke !important;
                font-size: 20px;
             }
             .nav-link::after{
@@ -13,7 +13,6 @@
                width: 0;
                display: block;
                height: 3.5px;
-               // background-color: red;
                @include setGradien($bg_color_1,$bg_color_2,$direc_right);
                transition: all 0.2s;
             }

@@ -1,14 +1,19 @@
+// import React, { useEffect, useState } from "react";
+// import { useNavigate, useParams } from "react-router-dom";
+// import MovieChair from "../../modules/Movie-seat/movie-chair";
+// import { fetchRoomListApi, bookingTicketApi } from "../../services/booking";
+
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import MovieChair from "../../modules/Movie-seat/movie-chair";
 import { fetchRoomListApi, bookingTicketApi } from "../../services/booking";
 import { formatDate } from "../../utils/common";
+import "./booking.scss";
 
 export default function Booking() {
   const [danhSachGhe, setDanhSachGhe] = useState([]);
 
   const [roomList, setRoomList] = useState();
-  console.log(roomList);
 
   const param = useParams();
 
@@ -60,7 +65,7 @@ export default function Booking() {
 
   return roomList ? (
     <div id="movies_booking">
-      <div className="container py-5">
+      <div className="w-75 mx-auto py-5">
         <div className="booking_content row">
           <div className="border_chair col-sm-12 col-md-12 col-lg-8 col-xl-8">
             <div className="screen">
@@ -115,7 +120,8 @@ export default function Booking() {
                 <div className="ngayChieu">
                   <span className="title">Ngày chiếu : </span>
                   <span className="content">
-                    {formatDate(roomList.thongTinPhim.ngayChieu)}
+                    {/* {formatDate(roomList.thongTinPhim.ngayChieu)} */}
+                    {roomList.thongTinPhim.ngayChieu}
                   </span>
                 </div>
                 <div className="diaChi">
@@ -129,6 +135,32 @@ export default function Booking() {
                     {roomList.thongTinPhim.tenRap}
                   </span>
                 </div>
+                <p>
+                  Ghế:{" "}
+                  {danhSachGhe.map((ele) =>
+                    ele.loaiGhe === "Thuong" ? (
+                      <span className="mr-2 badge badge-success">
+                        {ele.tenGhe}
+                      </span>
+                    ) : (
+                      <span className="mr-2 badge badge-danger">
+                        {ele.tenGhe}
+                      </span>
+                    )
+                  )}
+                </p>
+                <p>
+                  Tổng tiền:
+                  <span className="ml-2">
+                    {danhSachGhe
+                      .reduce((previousValue, currentValue) => {
+                        previousValue += currentValue.giaVe;
+                        return previousValue;
+                      }, 0)
+                      .toLocaleString()}
+                  </span>
+                  vnđ
+                </p>
                 <button>Thêm vào giỏ hàng</button>
               </div>
             </div>
@@ -137,10 +169,12 @@ export default function Booking() {
       </div>
     </div>
   ) : (
-    <div className="fancy-spinner">
-      <div className="ring" />
-      <div className="ring" />
-      <div className="dot" />
+    <div className="loading vh-100">
+      <div className="fancy-spinner">
+        <div className="ring" />
+        <div className="ring" />
+        <div className="dot" />
+      </div>
     </div>
   );
 }

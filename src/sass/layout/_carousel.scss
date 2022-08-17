@@ -1,0 +1,17 @@
+#carousel{
+      .ant-carousel{
+         .slick-slider{
+            .slick-dots{
+               li{
+                  button{
+                     width: 15px;
+                     height: 15px;
+                     border-radius: 50%;
+                     background: silver;
+                  }
+               }
+            }
+         }
+      }
+   
+}

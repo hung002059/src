@@ -35,6 +35,7 @@ export default function Header() {
               {!userState.userInfo ? (
                 <>
                   <button
+                    onClick={() => navigate("/register")}
                     className="btn btn-outline-info my-2 my-sm-0 mr-2"
                     type="submit"
                   >
@@ -74,41 +75,41 @@ export default function Header() {
           <div className="cart ml-auto">
             <div className="cart_layout">
               <div className="cart_content dropdown">
-                <div className="cart_btn">
-                  <button
-                    className="btn btn-primary dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i className="fas fa-shopping-cart" />
-                    <span className="quantities">(123456)</span>
-                  </button>
-                </div>
-                <div
-                  className="dropdown-menu"
-                  aria-labelledby="dropdownMenuButton"
+                <button
+                  class="btn dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
-                  <form>
-                    <table className="table text-center">
-                      <thead>
-                        <tr>
-                          <th>Tên Phim</th>
-                          <th>Ghế</th>
-                          <th>Tổng tiền</th>
-                        </tr>
-                      </thead>
-                      <tbody id="cartBody">
-                        <tr>
-                          <td>Tên Phim</td>
-                          <td>Ghế</td>
-                          <td>Tổng tiền</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </form>
+                  <i className="fas fa-shopping-cart" />
+                  <span className="quantities">(123456)</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <div class="modal-body">
+                    <form>
+                      <table class="table text-center">
+                        <thead>
+                          <tr>
+                            <th>Tên Phim</th>
+                            <th>Ghế</th>
+                            <th>Tổng tiền</th>
+                          </tr>
+                        </thead>
+                        <tbody id="cartBody"></tbody>
+                      </table>
+                      <div class="modal-footer">
+                        <button
+                          onClick={() => navigate("/cart")}
+                          type="button"
+                          class="btn btn-primary"
+                        >
+                          Thanh toán
+                        </button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>

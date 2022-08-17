@@ -37,27 +37,44 @@ export default function Login() {
   };
 
   return (
-    <div className="form-group">
-      <form className="w-25 mx-auto my-5" onSubmit={handleSubmit}>
-        <label>Tài khoản</label>
-        <input
-          type="text"
-          className="form-control w-75"
-          name="taiKhoan"
-          aria-describedby="helpId"
-          onChange={handleChange}
-        />
-        <label>Mật khẩu</label>
-        <input
-          type="password"
-          className="form-control w-75"
-          name="matKhau"
-          onChange={handleChange}
-          id="password"
-          aria-describedby="helpId"
-        />
-        <button className="btn btn-primary">Login</button>
-      </form>
+    <div>
+      <div className="modal-body">
+        <div className="form-group">
+          <form className="w-25 mx-auto my-5" onSubmit={handleSubmit}>
+            <label>Tài khoản</label>
+            <input
+              type="text"
+              className="form-control w-75"
+              name="taiKhoan"
+              aria-describedby="helpId"
+              onChange={handleChange}
+            />
+            <label>Mật khẩu</label>
+            <input
+              type="password"
+              className="form-control w-75"
+              name="matKhau"
+              onChange={handleChange}
+              id="password"
+              aria-describedby="helpId"
+            />
+            <button className="btn btn-primary mt-2">Login</button>
+          </form>
+        </div>
+      </div>
+      {/* <div id="LoginAdmin" className="modal fade" tabIndex={-1} role="dialog">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h4 className="modal-title">Đăng nhập Admin</h4>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div> */}
     </div>
   );
 }

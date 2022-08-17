@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function MovieManagement() {
-    return (
-        <div>movie-management</div>
-    )
+  return <div>movie-management</div>;
 }

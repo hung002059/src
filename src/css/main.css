@@ -1,0 +1,311 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+#header_nav nav h1, #header_nav nav i {
+  color: whitesmoke;
+}
+#header_nav nav .cart_layout {
+  transition: all 0.5s;
+}
+#header_nav nav .cart_layout:hover i {
+  color: silver;
+}
+#header_nav nav .cart_layout:hover span {
+  background-color: silver;
+}
+#header_nav nav .cart_layout i {
+  position: relative;
+  font-size: 30px;
+}
+#header_nav nav .cart_layout .quantities {
+  position: absolute;
+  color: black;
+  background-color: white;
+  border-radius: 7px;
+}
+#header_nav nav .cart_layout .dropdown:hover > .dropdown-menu {
+  display: block;
+  transform: translate(-50%, 0);
+}
+#header_nav nav .cart_layout .dropdown:hover > .dropdown-menu table {
+  width: 400px;
+  height: auto;
+}
+#header_nav nav .cart_layout .dropdown > .dropdown-toggle:active {
+  pointer-events: none;
+}
+
+#listMovies .title {
+  padding: 20px 0px;
+}
+#listMovies .title .nav .nav-item .nav-link {
+  background-color: transparent;
+  color: whitesmoke !important;
+  font-size: 20px;
+}
+#listMovies .title .nav .nav-item .nav-link::after {
+  content: "";
+  width: 0;
+  display: block;
+  height: 3.5px;
+  background-image: linear-gradient(to right, red, blue);
+  transition: all 0.2s;
+}
+#listMovies .title .nav .nav-item .nav-link.active {
+  transition: all 0.2s;
+  font-weight: 800;
+}
+#listMovies .title .nav .nav-item .nav-link.active::after {
+  width: 100%;
+}
+#listMovies .card {
+  border: 0px;
+}
+#listMovies .card img {
+  height: 400px;
+}
+#listMovies .card .card-header {
+  position: relative;
+}
+#listMovies .card .card-header:hover .card-hover {
+  opacity: 1;
+}
+#listMovies .card .card-header:hover .card-hover button:hover {
+  transition: all 1s;
+  background: linear-gradient(to left, red, blue);
+  color: white;
+  color: white;
+  padding: 5px 40px;
+  border: 5px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to left, red, blue);
+}
+#listMovies .card .card-hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 1s;
+}
+#listMovies .card .card-hover button {
+  color: red;
+  padding: 5px 40px;
+  border: 5px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to right, red, blue);
+}
+
+#carousel .ant-carousel .slick-slider .slick-dots li button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: silver;
+}
+
+#movies_detail .row {
+  margin: auto 0;
+}
+#movies_detail .movies_detail .movies_content h1 {
+  font-weight: 700;
+}
+#movies_detail .movies_detail .movies_content button {
+  color: black;
+  font-weight: 700;
+  font-size: 17px;
+  padding: 5px 40px;
+  border: 5px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to right, red, blue);
+}
+#movies_detail .movies_detail .movies_content button:hover {
+  transition: all 1s;
+  background: linear-gradient(to left, red, blue);
+  color: white;
+  color: white;
+  padding: 5px 40px;
+  border: 5px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to left, red, blue);
+}
+#movies_detail .movies_detail .movies_content .title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #a0a3a7;
+}
+#movies_detail .movies_detail .movies_content .content {
+  font-size: 20px;
+  font-weight: 600;
+}
+#movies_detail .movies_detail .movies_content .content_title div {
+  padding: 0.5rem 0;
+}
+#movies_detail .movies_detail .details_content .content_header h2 {
+  padding: 5px 15px;
+  color: black;
+  border-bottom: 5px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to right, red, blue);
+}
+#movies_detail .movies_detail .details_content .content_descript p {
+  font-size: 20px;
+}
+#movies_detail .movie_showtimes {
+  padding: 3rem 0;
+}
+#movies_detail .movie_showtimes .showtime_layout h3 {
+  display: flex;
+  align-items: center;
+}
+#movies_detail .movie_showtimes .showtime_layout .showtime_tilte .title_content {
+  text-transform: uppercase;
+  padding: 15px;
+  color: black;
+  border-bottom: 5px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to right, red, blue);
+}
+#movies_detail .movie_showtimes .showtime_layout .showtime_tilte .title_content img {
+  width: 70px;
+  height: 70px;
+}
+#movies_detail .movie_showtimes .showtime_layout .showtime_content .content {
+  border: 2px solid;
+  border-width: 100%;
+}
+#movies_detail .movie_showtimes .showtime_layout .showtime_content .content .RapPhim .RapPhim_title img {
+  width: 50px;
+  height: 50px;
+}
+#movies_detail .movie_showtimes .showtime_layout .showtime_content .content .GioChieu {
+  justify-content: space-around;
+}
+#movies_detail .movie_showtimes .showtime_layout .showtime_content .content .GioChieu a {
+  height: 80px;
+  width: 270px;
+  border: 2px solid;
+  display: block;
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#movies_detail .movie_showtimes .showtime_layout .showtime_content .content .GioChieu a:hover {
+  color: white;
+  background-image: linear-gradient(to left, red, blue);
+}
+#movies_detail .movie_showtimes .showtime_layout .showtime_content .content .GioChieu a .time, #movies_detail .movie_showtimes .showtime_layout .showtime_content .content .GioChieu a .rap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#movies_booking .border_chair {
+  border: 1px solid silver;
+}
+#movies_booking .border_chair .screen {
+  height: 100px;
+}
+#movies_booking .border_chair .screen h6 {
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+  margin: 1rem 1.5rem;
+}
+#movies_booking .border_chair .chair {
+  display: flex;
+  justify-content: center;
+}
+#movies_booking .border_chair .chair button {
+  margin: 0.1rem;
+}
+#movies_booking .border_detail .detail_content p {
+  font-size: 20px;
+}
+#movies_booking .border_detail .detail_content button {
+  font-weight: 700;
+  font-size: 17px;
+  color: black;
+  padding: 5px 40px;
+  border: 5px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to right, red, blue);
+}
+#movies_booking .border_detail .detail_content button:hover {
+  transition: all 1s;
+  background: linear-gradient(to left, red, blue);
+  color: white;
+  color: white;
+  padding: 5px 40px;
+  border: 5px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to left, red, blue);
+}
+
+#footer {
+  padding: 50px 0px;
+}
+#footer .footer_title {
+  border-left: 5px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to bottom, red, blue);
+}
+#footer .footer_title h4 {
+  color: #858383;
+  padding: 5px 10px;
+}
+#footer a {
+  list-style: none;
+  text-decoration: none;
+  color: #858383;
+  font-size: 20px;
+  transition: all 0.25s;
+}
+#footer a:hover {
+  color: white;
+}
+#footer .footer_contact .cinema .cinema_content {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  text-align: center;
+  padding: 5px;
+}
+#footer .footer_contact i {
+  font-size: 25px;
+}
+#footer .app .app_content {
+  display: grid;
+  grid-template-columns: auto auto;
+  text-align: center;
+  padding: 5px;
+}
+#footer .footer_introduce a {
+  padding: 10px 20px;
+}
+#footer .service_content, #footer .support_content {
+  color: #858383;
+  font-size: 20px;
+}/*# sourceMappingURL=main.css.map */

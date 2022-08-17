@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { LoadingContext } from "../../contexts/loading.context";
+import { useAsync } from "../../hooks/useAsync";
 import { fetchMovieListApi } from "../../services/movie";
 
 export default function MovieList() {
   const navigate = useNavigate();
 
-  const [movieList, setMovieList] = useState([]);
-
-  useEffect(() => {
-    fetchMovieList();
-  }, []);
-
-  const fetchMovieList = async () => {
-    const result = await fetchMovieListApi();
-
-    setMovieList(result.data.content);
-  };
+  const { state: movieList = [] } = useAsync({
+    dependencies: [],
+    service: () => fetchMovieListApi(),
+  });
 
   const renderHotMovies = () => {
     return movieList?.map((ele) => {
@@ -127,11 +122,9 @@ export default function MovieList() {
 
   return (
     <>
-      <div className="title bg-dark row">
-        <ul
-          className="py-3 nav nav-pills justify-content-center col-sm-12 col-md-12 col-lg-6 col-xl-6"
-          role="tablist"
-        >
+      {/* title */}
+      <div className="title bg-dark">
+        <ul className="nav nav-pills justify-content-center" role="tablist">
           <li className="nav-item">
             <a className="nav-link active" data-toggle="pill" href="#phimHot">
               Phim Hot
@@ -148,25 +141,27 @@ export default function MovieList() {
             </a>
           </li>
         </ul>
-        <div className="py-3 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <div className="search_content">
-            <div className="search col-sm-12 col-md-12">
-              <a className="nav-link">
-                <form className="form-inline justify-content-center row">
-                  <input
-                    className="form-control mr-2 col-7"
-                    type="text"
-                    placeholder="Search"
-                  />
-                  <button className="btn btn-success col-3" type="submit">
-                    Search
-                  </button>
-                </form>
-              </a>
-            </div>
+      </div>
+
+      {/* search */}
+      <div className="search row justify-content-center">
+        <div className="search_conten col-8 py-3">
+          <div className="search">
+            <form className="form-inline row justify-content-center">
+              <input
+                className="form-control mr-2 col-7"
+                type="text"
+                placeholder="Tìm kiếm phim"
+              />
+              <button className="btn btn-success col-1" type="submit">
+                <i className="fas fa-search" />
+              </button>
+            </form>
           </div>
         </div>
       </div>
+
+      {/* list movie */}
       <div className="movies tab-content pt-4">
         <div id="phimHot" className="container tab-pane active">
           <div className="row">{renderHotMovies()}</div>

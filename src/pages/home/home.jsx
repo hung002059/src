@@ -2,17 +2,13 @@ import React from "react";
 import Carousel from "../../modules/Carousel/carousel";
 import MovieList from "../../modules/movie-list/movie-list";
 
-const styleCarousel = {
-  background: "black",
-};
-
 export default function Home() {
   return (
     <div id="HomePage">
-      <div id="carousel" style={styleCarousel}>
+      <div id="carousel" className="my-4">
         <Carousel />
       </div>
-      <div id="listMovies" className="pb-5">
+      <div id="listMovies" className="my-4">
         <MovieList />
       </div>
     </div>
