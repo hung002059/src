@@ -16,40 +16,105 @@ export default function Header() {
   };
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark">
-      <NavLink className="navbar-brand" to="/">
-        <img className="w-50" src="../logo.png" alt="logo" />
-      </NavLink>
-      <div className="header_Login ml-auto">
-        {!userState.userInfo ? (
-          <>
+    <div id="header_nav">
+      <div className="container pb-3">
+        <div className="Login_layout row">
+          {/* Admin */}
+          <div className="Admin_login col-6">
             <button
-              className="btn btn-outline-info my-2 my-sm-0 mr-2"
-              type="submit"
-            >
-              Register
-            </button>
-
-            <button
+              className="btn btn-success"
               onClick={() => navigate("/login")}
-              type="button"
-              id="btnLogin"
-              className="btn btn-secondary"
-              data-toggle="modal"
-              data-target="#myModal"
             >
-              Login
+              Kênh người quản lý
             </button>
-          </>
-        ) : (
-          <>
-            <span>Welcome {userState.userInfo.hoTen}!!!</span>
-            <button onClick={handleLogout} className="btn btn-info ml-3">
-              Log out
-            </button>
-          </>
-        )}
+          </div>
+
+          {/* Client */}
+          <div className="Client_login col-6 row justify-content-end">
+            <div className="header_Login">
+              {!userState.userInfo ? (
+                <>
+                  <button
+                    className="btn btn-outline-info my-2 my-sm-0 mr-2"
+                    type="submit"
+                  >
+                    Register
+                  </button>
+
+                  <button
+                    onClick={() => navigate("/login")}
+                    type="button"
+                    id="btnLogin"
+                    className="btn btn-secondary"
+                  >
+                    Login
+                  </button>
+                </>
+              ) : (
+                <>
+                  <span>Welcome {userState.userInfo.hoTen}!!!</span>
+                  <button onClick={handleLogout} className="btn btn-info ml-3">
+                    Log out
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
-    </nav>
+
+      <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div className="navbar_content container">
+          {/* Logo */}
+          <NavLink className="navbar-brand" to="/">
+            <h1>Captone</h1>
+          </NavLink>
+
+          {/* Cart */}
+          <div className="cart ml-auto">
+            <div className="cart_layout">
+              <div className="cart_content dropdown">
+                <div className="cart_btn">
+                  <button
+                    className="btn btn-primary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i className="fas fa-shopping-cart" />
+                    <span className="quantities">(123456)</span>
+                  </button>
+                </div>
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <form>
+                    <table className="table text-center">
+                      <thead>
+                        <tr>
+                          <th>Tên Phim</th>
+                          <th>Ghế</th>
+                          <th>Tổng tiền</th>
+                        </tr>
+                      </thead>
+                      <tbody id="cartBody">
+                        <tr>
+                          <td>Tên Phim</td>
+                          <td>Ghế</td>
+                          <td>Tổng tiền</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
   );
 }
