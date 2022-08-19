@@ -7,8 +7,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import MovieChair from "../../modules/Movie-seat/movie-chair";
 import { fetchRoomListApi, bookingTicketApi } from "../../services/booking";
+import { useDispatch } from "react-redux/";
 import { formatDate } from "../../utils/common";
 import "./booking.scss";
+import { addToCartAction } from "../../store/actions/userAction";
+import { CART_LIST_KEY } from "../../constants/common";
 
 export default function Booking() {
   const [danhSachGhe, setDanhSachGhe] = useState([]);
@@ -18,6 +21,8 @@ export default function Booking() {
   const param = useParams();
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchRoomList();
@@ -54,13 +59,21 @@ export default function Booking() {
     });
 
     const submitData = {
+      gioChieu: roomList.thongTinPhim.gioChieu,
+      ngayChieu: roomList.thongTinPhim.ngayChieu,
+      tenPhim: roomList.thongTinPhim.tenPhim,
       maLichChieu: param.maLichChieu,
       danhSachVe,
     };
+    console.log(submitData);
 
-    await bookingTicketApi(submitData);
+    dispatch(addToCartAction(submitData));
 
-    navigate("/");
+    // localStorage.setItem(CART_LIST_KEY, JSON.stringify(submitData));
+
+    // await bookingTicketApi(submitData);
+
+    // navigate("/");
   };
 
   return roomList ? (
@@ -120,7 +133,6 @@ export default function Booking() {
                 <div className="ngayChieu">
                   <span className="title">Ngày chiếu : </span>
                   <span className="content">
-                    {/* {formatDate(roomList.thongTinPhim.ngayChieu)} */}
                     {roomList.thongTinPhim.ngayChieu}
                   </span>
                 </div>
@@ -161,7 +173,9 @@ export default function Booking() {
                   </span>
                   vnđ
                 </p>
-                <button>Thêm vào giỏ hàng</button>
+                <button onClick={() => handleBookingTicket()}>
+                  Thêm vào giỏ hàng
+                </button>
               </div>
             </div>
           </div>

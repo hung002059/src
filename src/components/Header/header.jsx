@@ -76,20 +76,24 @@ export default function Header() {
             <div className="cart_layout">
               <div className="cart_content dropdown">
                 <button
-                  class="btn dropdown-toggle"
+                  className="btn dropdown-toggle"
                   type="button"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  onClick={() => navigate("/cart")}
                 >
                   <i className="fas fa-shopping-cart" />
                   <span className="quantities">(123456)</span>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <div class="modal-body">
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <div className="modal-body">
                     <form>
-                      <table class="table text-center">
+                      <table className="table text-center">
                         <thead>
                           <tr>
                             <th>Tên Phim</th>
@@ -99,11 +103,11 @@ export default function Header() {
                         </thead>
                         <tbody id="cartBody"></tbody>
                       </table>
-                      <div class="modal-footer">
+                      <div className="modal-footer">
                         <button
                           onClick={() => navigate("/cart")}
                           type="button"
-                          class="btn btn-primary"
+                          className="btn btn-primary"
                         >
                           Thanh toán
                         </button>

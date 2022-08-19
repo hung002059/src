@@ -45,7 +45,6 @@ export default function ShowTime() {
                       </div>
                       <div className="GioChieu row">
                         {ele.lichChieuPhim.map((ele) => {
-                          console.log(ele);
                           return (
                             <Link
                               to={`/booking/${ele.maLichChieu}`}
