@@ -46,18 +46,18 @@ export default function CartDetail() {
         };
       });
     });
+
     const dataLichChieu = cartList.map((ele) => {
       return { maLichChieu: ele.maLichChieu };
     });
-
-    console.log(dataTicket, dataLichChieu);
 
     const submit = {
       dataTicket,
       dataLichChieu,
     };
 
-    await bookingTicket(submit);
+    console.log(submit);
+    // await bookingTicket(submit);
 
     alert("Bạn đặt thành công");
 
