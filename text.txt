@@ -1,0 +1,6 @@
+contants/commons.js
+modules/cart/cart.jsx
+pages/booking.jsx
+pages/cart/jsx
+store/reducers
+carousel height->450px

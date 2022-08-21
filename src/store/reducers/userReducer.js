@@ -22,19 +22,7 @@ export const userReducer = (state = DEFAULT_STATE, { type, payload }) => {
     }
 
     case ADD_TO_CART: {
-      state.cartList = payload;
-      console.log(payload.maLichChieu);
-
-      const data = [...cartList];
-
-      const idx = data.findIndex(
-        (ele) => ele.maLichChieu === payload.maLichChieu
-      );
-      console.log(idx);
-
-      if (idx !== -1) data.push(payload);
-      console.log(data);
-
+      state.cartList = [...state.cartList, payload];
       return { ...state };
     }
 

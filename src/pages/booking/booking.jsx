@@ -1,17 +1,10 @@
-// import React, { useEffect, useState } from "react";
-// import { useNavigate, useParams } from "react-router-dom";
-// import MovieChair from "../../modules/Movie-seat/movie-chair";
-// import { fetchRoomListApi, bookingTicketApi } from "../../services/booking";
-
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import MovieChair from "../../modules/Movie-seat/movie-chair";
-import { fetchRoomListApi, bookingTicketApi } from "../../services/booking";
+import { fetchRoomListApi } from "../../services/booking";
 import { useDispatch } from "react-redux/";
-import { formatDate } from "../../utils/common";
 import "./booking.scss";
 import { addToCartAction } from "../../store/actions/userAction";
-import { CART_LIST_KEY } from "../../constants/common";
 
 export default function Booking() {
   const [danhSachGhe, setDanhSachGhe] = useState([]);
@@ -53,6 +46,7 @@ export default function Booking() {
   const handleBookingTicket = async () => {
     const danhSachVe = danhSachGhe.map((ele) => {
       return {
+        tenGhe: ele.tenGhe,
         maGhe: ele.maGhe,
         giaVe: ele.giaVe,
       };
@@ -65,15 +59,8 @@ export default function Booking() {
       maLichChieu: param.maLichChieu,
       danhSachVe,
     };
-    console.log(submitData);
 
     dispatch(addToCartAction(submitData));
-
-    // localStorage.setItem(CART_LIST_KEY, JSON.stringify(submitData));
-
-    // await bookingTicketApi(submitData);
-
-    // navigate("/");
   };
 
   return roomList ? (
@@ -148,14 +135,14 @@ export default function Booking() {
                   </span>
                 </div>
                 <p>
-                  Ghế:{" "}
-                  {danhSachGhe.map((ele) =>
+                  Ghế:
+                  {danhSachGhe.map((ele, idx) =>
                     ele.loaiGhe === "Thuong" ? (
-                      <span className="mr-2 badge badge-success">
+                      <span key={idx} className="mr-2 badge badge-success">
                         {ele.tenGhe}
                       </span>
                     ) : (
-                      <span className="mr-2 badge badge-danger">
+                      <span key={idx} className="mr-2 badge badge-danger">
                         {ele.tenGhe}
                       </span>
                     )
@@ -173,7 +160,12 @@ export default function Booking() {
                   </span>
                   vnđ
                 </p>
-                <button onClick={() => handleBookingTicket()}>
+                <button
+                  onClick={() => {
+                    navigate("/");
+                    handleBookingTicket();
+                  }}
+                >
                   Thêm vào giỏ hàng
                 </button>
               </div>

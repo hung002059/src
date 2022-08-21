@@ -3,7 +3,7 @@ import { fetchMovieListApi } from "../../services/movie";
 import { Carousel as CarouselAntd } from "antd";
 
 const contentStyle = {
-  height: "600px",
+  height: "450px",
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",

@@ -15,6 +15,35 @@ export default function Header() {
     navigate("/");
   };
 
+  const renderTableBody = () => {
+    return userState.cartList.map((ele) => {
+      return (
+        <tr>
+          <td>{ele.tenPhim}</td>
+          <td>
+            {ele.danhSachVe.map((ele) => {
+              return (
+                <button className="badge badge-success m-1">
+                  {ele.tenGhe}
+                </button>
+              );
+            })}
+          </td>
+          <td>{ele.gioChieu}</td>
+          <td>{ele.ngayChieu}</td>
+          <td>
+            {ele.danhSachVe
+              .reduce((previousValue, currentValue) => {
+                previousValue += currentValue.giaVe;
+                return previousValue;
+              }, 0)
+              .toLocaleString()}
+          </td>
+        </tr>
+      );
+    });
+  };
+
   return (
     <div id="header_nav">
       <div className="container pb-3">
@@ -23,7 +52,7 @@ export default function Header() {
           <div className="Admin_login col-6">
             <button
               className="btn btn-success"
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/cart")}
             >
               Kênh người quản lý
             </button>
@@ -85,7 +114,9 @@ export default function Header() {
                   onClick={() => navigate("/cart")}
                 >
                   <i className="fas fa-shopping-cart" />
-                  <span className="quantities">(123456)</span>
+                  <span className="quantities">
+                    ({userState.cartList.length})
+                  </span>
                 </button>
                 <div
                   className="dropdown-menu"
@@ -98,10 +129,12 @@ export default function Header() {
                           <tr>
                             <th>Tên Phim</th>
                             <th>Ghế</th>
+                            <th>Ngày chiếu</th>
+                            <th>Giờ chiếu</th>
                             <th>Tổng tiền</th>
                           </tr>
                         </thead>
-                        <tbody id="cartBody"></tbody>
+                        <tbody id="cartBody">{renderTableBody()}</tbody>
                       </table>
                       <div className="modal-footer">
                         <button
