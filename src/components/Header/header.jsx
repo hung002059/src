@@ -8,6 +8,9 @@ export default function Header() {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.userReducer);
   const navigate = useNavigate();
+  const { cartList } = userState;
+
+  console.log(cartList);
 
   const handleLogout = () => {
     localStorage.removeItem(USER_INFO_KEY);
@@ -16,32 +19,35 @@ export default function Header() {
   };
 
   const renderTableBody = () => {
-    return userState.cartList.map((ele) => {
-      return (
-        <tr key={ele.maLichChieu}>
-          <td>{ele.tenPhim}</td>
-          <td>
-            {ele.danhSachVe.map((ele) => {
-              return (
-                <button key={ele.maGhe} className="badge badge-success m-1">
-                  {ele.tenGhe}
-                </button>
-              );
-            })}
-          </td>
-          <td>{ele.gioChieu}</td>
-          <td>{ele.ngayChieu}</td>
-          <td>
-            {ele.danhSachVe
-              .reduce((previousValue, currentValue) => {
-                previousValue += currentValue.giaVe;
-                return previousValue;
-              }, 0)
-              .toLocaleString()}
-          </td>
-        </tr>
-      );
-    });
+    if (cartList)
+      return cartList.map((ele) => {
+        if (ele !== "")
+          return (
+            <tr key={ele.maLichChieu}>
+              <td>{ele.tenPhim}</td>
+              <td>
+                {ele.tenGhe.map((ele, idx) => {
+                  return (
+                    <button key={idx} className="badge badge-warning m-1">
+                      {ele}
+                    </button>
+                  );
+                })}
+              </td>
+              <td>{ele.gioChieu}</td>
+              <td>{ele.ngayChieu}</td>
+              <td>
+                {ele.danhSachVe &&
+                  ele.danhSachVe
+                    .reduce((previousValue, currentValue) => {
+                      previousValue += currentValue.giaVe;
+                      return previousValue;
+                    }, 0)
+                    .toLocaleString()}
+              </td>
+            </tr>
+          );
+      });
   };
 
   return (

@@ -2,6 +2,7 @@ import React, { lazy } from "react";
 import { useRoutes } from "react-router-dom";
 import Cart from "../pages/cart/cart";
 import Register from "../pages/Register/register";
+import bookingSuccess from "../pages/booking-success/booking-success";
 const NoAuthGuard = lazy(() => import("../guards/no-auth-guard"));
 const AuthGuard = lazy(() => import("../guards/auth-guard"));
 const HomeLayouts = lazy(() => import("../layouts/home"));

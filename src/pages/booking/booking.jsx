@@ -46,13 +46,17 @@ export default function Booking() {
   const handleBookingTicket = async () => {
     const danhSachVe = danhSachGhe.map((ele) => {
       return {
-        tenGhe: ele.tenGhe,
+        // tenGhe: ele.tenGhe,
         maGhe: ele.maGhe,
         giaVe: ele.giaVe,
       };
     });
+    const tenGhe = danhSachGhe.map((ele) => {
+      return ele.tenGhe;
+    });
 
     const submitData = {
+      tenGhe,
       gioChieu: roomList.thongTinPhim.gioChieu,
       ngayChieu: roomList.thongTinPhim.ngayChieu,
       tenPhim: roomList.thongTinPhim.tenPhim,
@@ -162,7 +166,7 @@ export default function Booking() {
                 </p>
                 <button
                   onClick={() => {
-                    navigate("/");
+                    // navigate("/");
                     handleBookingTicket();
                   }}
                 >

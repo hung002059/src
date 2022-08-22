@@ -15,10 +15,10 @@ export default function CartDetail() {
         <tr key={ele.maLichChieu}>
           <td>{ele.tenPhim}</td>
           <td>
-            {ele.danhSachVe.map((ele) => {
+            {ele.tenGhe.map((ele, idx) => {
               return (
-                <button key={ele.maGhe} className="badge badge-success m-1">
-                  {ele.tenGhe}
+                <button key={idx} className="badge badge-warning m-1">
+                  {ele}
                 </button>
               );
             })}
@@ -26,12 +26,13 @@ export default function CartDetail() {
           <td>{ele.gioChieu}</td>
           <td>{ele.ngayChieu}</td>
           <td>
-            {ele.danhSachVe
-              .reduce((previousValue, currentValue) => {
-                previousValue += currentValue.giaVe;
-                return previousValue;
-              }, 0)
-              .toLocaleString()}
+            {ele.danhSachVe &&
+              ele.danhSachVe
+                .reduce((previousValue, currentValue) => {
+                  previousValue += currentValue.giaVe;
+                  return previousValue;
+                }, 0)
+                .toLocaleString()}
           </td>
         </tr>
       );
@@ -39,31 +40,24 @@ export default function CartDetail() {
   };
 
   const bookingTicket = async () => {
-    const dataTicket = cartList.map((element) => {
-      return element.danhSachVe.map((ele) => {
+    if (cartList) {
+      const dataTicket = cartList.map((element) => {
         return {
           maLichChieu: element.maLichChieu,
-          danhSachVe: {
-            maGhe: ele.maGhe,
-            giaVe: ele.giaVe,
-          },
+          danhSachVe: element.danhSachVe,
         };
       });
-    });
 
-    await dataTicket.map((data) => {
-      console.log(data);
-      return data.map((ticket) => {
-        console.log(ticket);
-        // bookingTicketApi(ticket);
+      await dataTicket.map((data) => {
+        bookingTicketApi(data);
       });
-    });
 
-    alert("Bạn đặt thành công");
+      alert("Bạn đặt thành công");
 
-    // navigate("/");
+      dispatch();
 
-    dispatch(() => {});
+      navigate("/");
+    }
   };
 
   return (
