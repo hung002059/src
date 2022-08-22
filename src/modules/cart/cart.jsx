@@ -51,21 +51,19 @@ export default function CartDetail() {
       });
     });
 
-    const submitData = dataTicket.map((data) => {
-      return { data };
-    });
-
-    await submitData.map((element) => {
-      return element.data.map((ticket) => {
-        bookingTicketApi(ticket);
+    await dataTicket.map((data) => {
+      console.log(data);
+      return data.map((ticket) => {
+        console.log(ticket);
+        // bookingTicketApi(ticket);
       });
     });
 
     alert("Bạn đặt thành công");
 
-    navigate("/");
+    // navigate("/");
 
-    dispatch();
+    dispatch(() => {});
   };
 
   return (
