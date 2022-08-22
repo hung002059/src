@@ -18,12 +18,12 @@ export default function Header() {
   const renderTableBody = () => {
     return userState.cartList.map((ele) => {
       return (
-        <tr>
+        <tr key={ele.maLichChieu}>
           <td>{ele.tenPhim}</td>
           <td>
             {ele.danhSachVe.map((ele) => {
               return (
-                <button className="badge badge-success m-1">
+                <button key={ele.maGhe} className="badge badge-success m-1">
                   {ele.tenGhe}
                 </button>
               );

@@ -1,22 +1,23 @@
-import { get } from "jquery";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { bookingTicketApi } from "../../services/booking";
 
 export default function CartDetail() {
   const selector = useSelector((state) => state.userReducer);
   const { cartList } = selector;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const renderTableBody = () => {
     return cartList.map((ele) => {
       return (
-        <tr>
+        <tr key={ele.maLichChieu}>
           <td>{ele.tenPhim}</td>
           <td>
             {ele.danhSachVe.map((ele) => {
               return (
-                <button className="badge badge-success m-1">
+                <button key={ele.maGhe} className="badge badge-success m-1">
                   {ele.tenGhe}
                 </button>
               );
@@ -38,30 +39,33 @@ export default function CartDetail() {
   };
 
   const bookingTicket = async () => {
-    const dataTicket = cartList.map((ele) => {
-      return ele.danhSachVe.map((ele) => {
+    const dataTicket = cartList.map((element) => {
+      return element.danhSachVe.map((ele) => {
         return {
-          maGhe: ele.maGhe,
-          giaVe: ele.giaVe,
+          maLichChieu: element.maLichChieu,
+          danhSachVe: {
+            maGhe: ele.maGhe,
+            giaVe: ele.giaVe,
+          },
         };
       });
     });
 
-    const dataLichChieu = cartList.map((ele) => {
-      return { maLichChieu: ele.maLichChieu };
+    const submitData = dataTicket.map((data) => {
+      return { data };
     });
 
-    const submit = {
-      dataTicket,
-      dataLichChieu,
-    };
-
-    console.log(submit);
-    // await bookingTicket(submit);
+    await submitData.map((element) => {
+      return element.data.map((ticket) => {
+        bookingTicketApi(ticket);
+      });
+    });
 
     alert("Bạn đặt thành công");
 
-    // navigate("/");
+    navigate("/");
+
+    dispatch();
   };
 
   return (
